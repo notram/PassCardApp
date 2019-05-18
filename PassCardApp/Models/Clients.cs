@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,8 +29,11 @@ namespace PassCardApp.Models
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime InsertedAt { get; set; }
                
-        public Guid InserterId { get; set; }
-        public Guid InserterName { get; set; }
+        public string InsertedById { get; set; }
+
+
+        [ForeignKey("InsertedById")]
+        public IdentityUser InsertedByUser { get; set; }
 
 
     }

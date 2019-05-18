@@ -1,0 +1,102 @@
+﻿@model PassCardApp.Models.TicketType
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TicketType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketTypeName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TicketTypeName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActiveDayCount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ActiveDayCount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckinLimit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CheckinLimit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DailyCheckInLimit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DailyCheckInLimit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartHour)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartHour)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EndHour)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndHour)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActiveDays)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ActiveDays)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActiveMonday)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ActiveMonday)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActiveTuesday)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ActiveTuesday)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActiveWednesday)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ActiveWednesday)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActiveThursday)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ActiveThursday)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActiveFriday)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ActiveFriday)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActiveSaturday)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ActiveSaturday)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActiveSunday)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ActiveSunday)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.TicketTypeId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

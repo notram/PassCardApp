@@ -1,0 +1,113 @@
+﻿@model IEnumerable<PassCardApp.Models.TicketType>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TicketTypeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiveDayCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckinLimit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DailyCheckInLimit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartHour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndHour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiveDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiveMonday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiveTuesday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiveWednesday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiveThursday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiveFriday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiveSaturday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiveSunday)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveDayCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckinLimit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DailyCheckInLimit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartHour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndHour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveMonday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveTuesday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveWednesday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveThursday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveFriday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveSaturday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveSunday)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TicketTypeId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TicketTypeId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TicketTypeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

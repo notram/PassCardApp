@@ -1,0 +1,109 @@
+﻿@model PassCardApp.Models.TicketType
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>TicketType</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TicketTypeName" class="control-label"></label>
+                <input asp-for="TicketTypeName" class="form-control" />
+                <span asp-validation-for="TicketTypeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActiveDayCount" class="control-label"></label>
+                <input asp-for="ActiveDayCount" class="form-control" />
+                <span asp-validation-for="ActiveDayCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CheckinLimit" class="control-label"></label>
+                <input asp-for="CheckinLimit" class="form-control" />
+                <span asp-validation-for="CheckinLimit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DailyCheckInLimit" class="control-label"></label>
+                <input asp-for="DailyCheckInLimit" class="form-control" />
+                <span asp-validation-for="DailyCheckInLimit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartHour" class="control-label"></label>
+                <input asp-for="StartHour" class="form-control" />
+                <span asp-validation-for="StartHour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndHour" class="control-label"></label>
+                <input asp-for="EndHour" class="form-control" />
+                <span asp-validation-for="EndHour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActiveDays" class="control-label"></label>
+                <input asp-for="ActiveDays" class="form-control" />
+                <span asp-validation-for="ActiveDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="ActiveMonday" /> @Html.DisplayNameFor(model => model.ActiveMonday)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="ActiveTuesday" /> @Html.DisplayNameFor(model => model.ActiveTuesday)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="ActiveWednesday" /> @Html.DisplayNameFor(model => model.ActiveWednesday)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="ActiveThursday" /> @Html.DisplayNameFor(model => model.ActiveThursday)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="ActiveFriday" /> @Html.DisplayNameFor(model => model.ActiveFriday)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="ActiveSaturday" /> @Html.DisplayNameFor(model => model.ActiveSaturday)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="ActiveSunday" /> @Html.DisplayNameFor(model => model.ActiveSunday)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

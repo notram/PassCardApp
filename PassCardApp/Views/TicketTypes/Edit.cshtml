@@ -9,7 +9,7 @@
 <h4>TicketType</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="TicketTypeId" />
@@ -44,49 +44,37 @@
                 <span asp-validation-for="EndHour" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <div class="checkbox">
+                <div class="checkbox-inline">
                     <label>
                         <input asp-for="ActiveMonday" /> @Html.DisplayNameFor(model => model.ActiveMonday)
                     </label>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
+                <div class="checkbox-inline">
                     <label>
                         <input asp-for="ActiveTuesday" /> @Html.DisplayNameFor(model => model.ActiveTuesday)
                     </label>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
+                <div class="checkbox-inline">
                     <label>
                         <input asp-for="ActiveWednesday" /> @Html.DisplayNameFor(model => model.ActiveWednesday)
                     </label>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
+                <div class="checkbox-inline">
                     <label>
                         <input asp-for="ActiveThursday" /> @Html.DisplayNameFor(model => model.ActiveThursday)
                     </label>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
+                <div class="checkbox-inline">
                     <label>
                         <input asp-for="ActiveFriday" /> @Html.DisplayNameFor(model => model.ActiveFriday)
                     </label>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
+                <div class="checkbox-inline">
                     <label>
                         <input asp-for="ActiveSaturday" /> @Html.DisplayNameFor(model => model.ActiveSaturday)
                     </label>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
+                <div class="checkbox-inline">
                     <label>
                         <input asp-for="ActiveSunday" /> @Html.DisplayNameFor(model => model.ActiveSunday)
                     </label>

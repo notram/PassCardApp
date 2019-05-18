@@ -23,7 +23,15 @@ namespace PassCardApp.Controllers
         // GET: TicketTypes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TicketTypes.ToListAsync());
+            var users = (from u in _context.Users select u).ToList();
+
+            var tt = await _context.TicketTypes.ToListAsync();
+            foreach (var item in tt)
+            {
+                item.InsertedByUser = (from u in users where u.Id == item.InsertedBy select u).FirstOrDefault();
+            }
+
+            return View(tt);
         }
 
         // GET: TicketTypes/Details/5
@@ -58,7 +66,7 @@ namespace PassCardApp.Controllers
         public async Task<IActionResult> Create([Bind("TicketTypeId,TicketTypeName,ActiveDayCount,TotalCheckinLimit,DailyCheckInLimit,StartHour,EndHour,ActiveDays,ActiveMonday,ActiveTuesday,ActiveWednesday,ActiveThursday,ActiveFriday,ActiveSaturday,ActiveSunday,Price")] TicketType ticketType)
         {
             ticketType.InsertedAt = DateTime.Now;
-            ticketType.InsertedBy = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            ticketType.InsertedBy = User.FindFirstValue(ClaimTypes.NameIdentifier);
             User.FindFirstValue(ClaimTypes.Name);
             if (ModelState.IsValid)
             {

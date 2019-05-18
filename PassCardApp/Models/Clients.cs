@@ -26,9 +26,9 @@ namespace PassCardApp.Models
         [Display(Name = "Registration Date")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime InsertedAt { get; set; }
-
-
-        public Guid InsertedBy { get; set; }
+               
+        public Guid InserterId { get; set; }
+        public Guid InserterName { get; set; }
 
 
     }

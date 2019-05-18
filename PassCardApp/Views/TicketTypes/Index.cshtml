@@ -5,11 +5,13 @@
 }
 
 <h2>Index</h2>
-
+<p>
+    @ViewBag.userlist
+</p>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>
@@ -30,7 +32,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.EndHour)
             </th>
-            <th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
@@ -68,7 +69,7 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.)
+                @Html.DisplayFor(modelItem => item.InsertedByUser.UserName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.InsertedAt)

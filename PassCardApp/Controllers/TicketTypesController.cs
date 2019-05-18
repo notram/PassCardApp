@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,8 +11,6 @@ using PassCardApp.Models;
 
 namespace PassCardApp.Controllers
 {
-
-    [Authorize(Roles = "Admin,Cashier")]
     public class TicketTypesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -58,8 +55,11 @@ namespace PassCardApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TicketTypeId,TicketTypeName,ActiveDayCount,CheckinLimit,DailyCheckInLimit,StartHour,EndHour,ActiveDays,ActiveMonday,ActiveTuesday,ActiveWednesday,ActiveThursday,ActiveFriday,ActiveSaturday,ActiveSunday")] TicketType ticketType)
+        public async Task<IActionResult> Create([Bind("TicketTypeId,TicketTypeName,ActiveDayCount,TotalCheckinLimit,DailyCheckInLimit,StartHour,EndHour,ActiveDays,ActiveMonday,ActiveTuesday,ActiveWednesday,ActiveThursday,ActiveFriday,ActiveSaturday,ActiveSunday,Price")] TicketType ticketType)
         {
+            ticketType.InsertedAt = DateTime.Now;
+            ticketType.InsertedBy = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            User.FindFirstValue(ClaimTypes.Name);
             if (ModelState.IsValid)
             {
                 _context.Add(ticketType);
@@ -90,7 +90,7 @@ namespace PassCardApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TicketTypeId,TicketTypeName,ActiveDayCount,CheckinLimit,DailyCheckInLimit,StartHour,EndHour,ActiveDays,ActiveMonday,ActiveTuesday,ActiveWednesday,ActiveThursday,ActiveFriday,ActiveSaturday,ActiveSunday")] TicketType ticketType)
+        public async Task<IActionResult> Edit(int id, [Bind("TicketTypeId,TicketTypeName,ActiveDayCount,TotalCheckinLimit,DailyCheckInLimit,StartHour,EndHour,ActiveDays,ActiveMonday,ActiveTuesday,ActiveWednesday,ActiveThursday,ActiveFriday,ActiveSaturday,ActiveSunday,Price,InsertedBy,InsertedAt")] TicketType ticketType)
         {
             if (id != ticketType.TicketTypeId)
             {

@@ -19,7 +19,7 @@
                 @Html.DisplayNameFor(model => model.ActiveDayCount)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CheckinLimit)
+                @Html.DisplayNameFor(model => model.TotalCheckinLimit)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DailyCheckInLimit)
@@ -31,28 +31,14 @@
                 @Html.DisplayNameFor(model => model.EndHour)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ActiveDays)
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ActiveMonday)
+                @Html.DisplayNameFor(model => model.InsertedBy)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ActiveTuesday)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ActiveWednesday)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ActiveThursday)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ActiveFriday)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ActiveSaturday)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ActiveSunday)
+                @Html.DisplayNameFor(model => model.InsertedAt)
             </th>
             <th></th>
         </tr>
@@ -67,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.ActiveDayCount)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CheckinLimit)
+                @Html.DisplayFor(modelItem => item.TotalCheckinLimit)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DailyCheckInLimit)
@@ -79,28 +65,13 @@
                 @Html.DisplayFor(modelItem => item.EndHour)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ActiveDays)
+                @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ActiveMonday)
+                @Html.DisplayFor(modelItem => item.)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ActiveTuesday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ActiveWednesday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ActiveThursday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ActiveFriday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ActiveSaturday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ActiveSunday)
+                @Html.DisplayFor(modelItem => item.InsertedAt)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TicketTypeId">Edit</a> |

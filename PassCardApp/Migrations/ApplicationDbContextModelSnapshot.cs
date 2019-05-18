@@ -203,32 +203,24 @@ namespace PassCardApp.Migrations
 
                     b.Property<int?>("ActiveDayCount");
 
-                    b.Property<int>("ActiveDays");
-
-                    b.Property<bool>("ActiveFriday");
-
-                    b.Property<bool>("ActiveMonday");
-
-                    b.Property<bool>("ActiveSaturday");
-
-                    b.Property<bool>("ActiveSunday");
-
-                    b.Property<bool>("ActiveThursday");
-
-                    b.Property<bool>("ActiveTuesday");
-
-                    b.Property<bool>("ActiveWednesday");
-
-                    b.Property<int?>("CheckinLimit");
+                    b.Property<byte>("ActiveDays");
 
                     b.Property<int?>("DailyCheckInLimit");
 
                     b.Property<int?>("EndHour");
 
+                    b.Property<DateTime>("InsertedAt");
+
+                    b.Property<Guid?>("InsertedBy");
+
+                    b.Property<double>("Price");
+
                     b.Property<int?>("StartHour");
 
                     b.Property<string>("TicketTypeName")
                         .HasMaxLength(50);
+
+                    b.Property<int?>("TotalCheckinLimit");
 
                     b.HasKey("TicketTypeId");
 

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PassCardApp.Migrations
 {
-    public partial class iinn : Migration
+    public partial class ticktyp : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -72,18 +72,14 @@ namespace PassCardApp.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     TicketTypeName = table.Column<string>(maxLength: 50, nullable: true),
                     ActiveDayCount = table.Column<int>(nullable: true),
-                    CheckinLimit = table.Column<int>(nullable: true),
+                    TotalCheckinLimit = table.Column<int>(nullable: true),
                     DailyCheckInLimit = table.Column<int>(nullable: true),
                     StartHour = table.Column<int>(nullable: true),
                     EndHour = table.Column<int>(nullable: true),
-                    ActiveDays = table.Column<int>(nullable: false),
-                    ActiveMonday = table.Column<bool>(nullable: false),
-                    ActiveTuesday = table.Column<bool>(nullable: false),
-                    ActiveWednesday = table.Column<bool>(nullable: false),
-                    ActiveThursday = table.Column<bool>(nullable: false),
-                    ActiveFriday = table.Column<bool>(nullable: false),
-                    ActiveSaturday = table.Column<bool>(nullable: false),
-                    ActiveSunday = table.Column<bool>(nullable: false)
+                    ActiveDays = table.Column<byte>(nullable: false),
+                    Price = table.Column<double>(nullable: false),
+                    InsertedBy = table.Column<Guid>(nullable: true),
+                    InsertedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

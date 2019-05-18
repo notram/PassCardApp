@@ -23,9 +23,9 @@
                 <span asp-validation-for="ActiveDayCount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CheckinLimit" class="control-label"></label>
-                <input asp-for="CheckinLimit" class="form-control" />
-                <span asp-validation-for="CheckinLimit" class="text-danger"></span>
+                <label asp-for="TotalCheckinLimit" class="control-label"></label>
+                <input asp-for="TotalCheckinLimit" class="form-control" />
+                <span asp-validation-for="TotalCheckinLimit" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DailyCheckInLimit" class="control-label"></label>
@@ -41,11 +41,6 @@
                 <label asp-for="EndHour" class="control-label"></label>
                 <input asp-for="EndHour" class="form-control" />
                 <span asp-validation-for="EndHour" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ActiveDays" class="control-label"></label>
-                <input asp-for="ActiveDays" class="form-control" />
-                <span asp-validation-for="ActiveDays" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <div class="checkbox">
@@ -95,6 +90,11 @@
                         <input asp-for="ActiveSunday" /> @Html.DisplayNameFor(model => model.ActiveSunday)
                     </label>
                 </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

@@ -39,7 +39,57 @@ namespace PassCardApp.Models
         //Becomes active after
         public DateTime ActiveFrom { get; set; }
 
-        
+
+
+        [NotMapped]
+        public DateTime? ActiveUntil { get
+            {
+                if (TicketType == null)
+                {
+                    throw new TicketTypeUndefinedException();
+                }
+                if (TicketType.ActiveDayCount == null)
+                {
+                    return null;
+                }
+                return this.ActiveFrom.AddDays((double)TicketType.ActiveDayCount);
+            }
+        }
+
+
+        public enum ActiveStaus { Expired, Active, NotActiveYet  }
+
+        [NotMapped]
+        public ActiveStaus Status { get
+            {
+                if (DateTime.Now < ActiveFrom) return ActiveStaus.NotActiveYet;
+                if (DateTime.Now >= ActiveFrom && (ActiveUntil != null) && DateTime.Now < ActiveUntil) return ActiveStaus.Active;
+                return ActiveStaus.Expired;
+            }
+        }
+        [NotMapped]
+        public bool CanCheckIn{
+            get
+            {
+                return true;
+            }
+        }
+
+        private class TicketTypeUndefinedException : Exception
+        {
+            public TicketTypeUndefinedException()
+            {
+
+            }
+        }
+
+        private class CheckinsUndefinedException : Exception
+        {
+            public CheckinsUndefinedException()
+            {
+
+            }
+        }
 
     }
 }

@@ -37,7 +37,7 @@
         <tbody>
             @foreach (var item in Model)
             {
-                
+
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
@@ -52,9 +52,7 @@
                     @Html.DisplayFor(modelItem => item.InsertedAt)
                 </td>
                 <td>
-                    <form action=@Url.Action("Overview", "Sales", new { userid= item.ClientId }) method="get">
-                        <button type="submit" class="btn btn-success">Select</button>
-                    </form>
+                    <a href=@Url.Action("OverviewClient", "Sales", new { ClientId= item.ClientId }) class="btn btn-success" >Select</a>
                 </td>
             </tr>
             }

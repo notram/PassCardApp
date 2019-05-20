@@ -1,0 +1,107 @@
+﻿@model PassCardApp.Models.Ticket
+
+@{
+    ViewData["Title"] = "Configure and Overview Ticket";
+}
+
+    <h2>Configure and Overview Ticket</h2>
+
+<div>
+    <h3>Client</h3>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Client.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.PasscardNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Client.PasscardNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Client.Email)
+        </dd>
+    </dl>
+    <h3>Ticket</h3>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketType.TicketTypeName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TicketType.TicketTypeName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketType.ActiveDays)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TicketType.ActiveDays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketType.DailyCheckInLimit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TicketType.DailyCheckInLimit)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketType.ActiveDaysString)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TicketType.ActiveDaysString)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketType.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TicketType.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketType.ActiveHoursString)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TicketType.ActiveHoursString)
+        </dd>
+
+
+    </dl>
+
+    <h3>Seller</h3>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoldByUser.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SoldByUser.UserName)
+        </dd>
+    </dl>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <form action=@Url.Action("ConfirmTicket", "Sales") method="post">
+
+                <input type="hidden" name="TicketTypeId" value="@Html.DisplayFor(model => model.TicketTypeId)" />
+                <input type="hidden" name="ClientId" value=" @Html.DisplayFor(model => model.Client.ClientId)" />
+                <div class="form-group">
+
+                    <label asp-for="ActiveFrom" class="control-label"></label>
+                    @Html.TextBoxFor(model => model.ActiveFrom, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control datepicker" })
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="your_name" value="your_value" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

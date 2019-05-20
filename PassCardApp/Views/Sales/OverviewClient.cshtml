@@ -1,0 +1,67 @@
+﻿@model IEnumerable<PassCardApp.Models.Ticket>
+@{
+    ViewData["Title"] = @ViewBag.ClientName +" Overview";
+}
+
+<h1>OverviewClient</h1>
+
+@if(Model.Count() == 0)
+{
+<h2>
+    @ViewBag.ClientName currently has no active tickets
+</h2>
+}
+
+ 
+<a href=@Url.Action("ChooseTicket", "Sales", new { ClientId= ViewBag.ClientId }) class="btn btn-success">Sell ticket</a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TicketType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoldByUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoldAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiveFrom)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketType.TicketTypeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoldByUser.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoldAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActiveFrom)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TicketId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.TicketId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TicketId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

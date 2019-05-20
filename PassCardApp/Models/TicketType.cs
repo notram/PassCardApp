@@ -40,6 +40,38 @@ namespace PassCardApp.Models
         [Range(1, 24, ErrorMessage = "Activeness end hour must be between 1-24")]
         public int? EndHour { get; set; }
 
+        public string ActiveHoursString
+        {
+            get
+            {
+
+                string res = "";
+                if (StartHour==null && EndHour == null)
+                {
+                    return "All Day";
+                }
+
+                if (StartHour != null)
+                {
+                    res += StartHour.ToString();
+                }
+                else
+                {
+                    res += "Openning"; 
+                }
+                res += "-";
+
+                if (EndHour != null) {
+                    res += EndHour.ToString();
+                }
+                else
+                {
+                    res += "Closing";
+                }
+                return res;
+
+            }
+        }
 
         public byte ActiveDays { get; set; }
 
@@ -96,6 +128,29 @@ namespace PassCardApp.Models
         {
             get { return (ActiveDays & (byte)Day.Sun) > 0 ? true : false; }
             set { if (value) ActiveDays |= ((byte)Day.Sun); }
+        }
+        [NotMapped]
+        [Display(Name = "Active Days")]
+        public string ActiveDaysString
+        {
+            get
+            {
+                if ((ActiveDays ^ (byte)(Day.Mon | Day.Tue | Day.Wed | Day.Thu | Day.Fri | Day.Sat | Day.Sun)) == 0x00)
+                {
+                    return "All Days";
+                }
+                string[] days = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+                string res = "";
+                if ((ActiveDays & (byte)Day.Mon) > 0) res += "Mon,";
+                if ((ActiveDays & (byte)Day.Tue) > 0) res += "Tue,";
+                if ((ActiveDays & (byte)Day.Wed) > 0) res += "Wed,";
+                if ((ActiveDays & (byte)Day.Thu) > 0) res += "Thu,";
+                if ((ActiveDays & (byte)Day.Fri) > 0) res += "Fri,";
+                if ((ActiveDays & (byte)Day.Sat) > 0) res += "Sat,";
+                if ((ActiveDays & (byte)Day.Sun) > 0) res += "Sun,";
+                res = res.Substring(0,res.Length-1);
+                return res;
+            }
         }
 
         public double Price { get; set; }

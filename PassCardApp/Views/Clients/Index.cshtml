@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Add new Client</a>
 </p>
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>
@@ -25,35 +25,47 @@
                 @Html.DisplayNameFor(model => model.InsertedAt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.InsertedByUser)
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.DisplayNameFor(model => model.InsertedByUser)
+                }
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PasscardNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InsertedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InsertedByUser.UserName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ClientId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ClientId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ClientId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PasscardNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InsertedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InsertedByUser.UserName)
+                </td>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+
+                        <p>
+                            <a asp-action="Edit" asp-route-id="@item.ClientId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.ClientId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.ClientId">Delete</a>
+                        </p>
+
+                    }
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

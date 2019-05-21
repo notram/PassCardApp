@@ -15,6 +15,8 @@ using PassCardApp.Data;
 
 namespace PassCardApp.Controllers
 {
+
+    [Authorize(Roles = "Admin,Cashier")]
     public class ReportController : Controller
     {
         private readonly ApplicationDbContext _context;

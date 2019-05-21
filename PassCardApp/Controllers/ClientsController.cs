@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,8 @@ namespace PassCardApp.Controllers
         }
 
         // GET: Clients
+
+        [Authorize(Roles = "Admin,Cashier")]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Clients.Include(c => c.InsertedByUser);
@@ -28,6 +31,7 @@ namespace PassCardApp.Controllers
         }
 
         // GET: Clients/Details/5
+        [Authorize(Roles = "Admin,Cashier")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,6 +51,7 @@ namespace PassCardApp.Controllers
         }
 
         // GET: Clients/Create
+        [Authorize(Roles = "Admin,Cashier")]
         public IActionResult Create()
         {
             //ViewData["InsertedById"] = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -58,6 +63,7 @@ namespace PassCardApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Cashier")]
         public async Task<IActionResult> Create([Bind("ClientId,Name,Email,PasscardNumber")] Clients clients)
         {
             clients.InsertedAt = DateTime.Now;
@@ -73,6 +79,7 @@ namespace PassCardApp.Controllers
         }
 
         // GET: Clients/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -93,6 +100,7 @@ namespace PassCardApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("ClientId,Name,Email,PasscardNumber,InsertedAt")] Clients clients)
         {
             if (id != clients.ClientId)
@@ -125,6 +133,7 @@ namespace PassCardApp.Controllers
         }
 
         // GET: Clients/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -146,6 +155,7 @@ namespace PassCardApp.Controllers
         // POST: Clients/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var clients = await _context.Clients.FindAsync(id);

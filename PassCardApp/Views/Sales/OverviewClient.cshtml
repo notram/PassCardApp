@@ -3,7 +3,7 @@
     ViewData["Title"] = @ViewBag.ClientName + " Overview";
 }
 
-<h1>OverviewClient</h1>
+<h1> @ViewBag.ClientName overview</h1>
 
 @if (Model.Count() == 0)
 {
@@ -12,78 +12,101 @@
     </h2>
 }
 
-
-<a href=@Url.Action("ChooseTicket", "Sales", new { ClientId= ViewBag.ClientId }) class="btn btn-success">Sell ticket</a>
-
+<div class="text-right" >
+    <a href=@Url.Action("ChooseTicket", "Sales", new { ClientId= ViewBag.ClientId }) class="btn btn-success">Sell ticket</a>
+</div>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TicketType)
+                Check In
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Client)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SoldByUser)
+                <p>
+                    @Html.DisplayNameFor(model => model.TicketType.TicketTypeName)
+                </p>
+                <p>
+                    Active/Expired
+                </p>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SoldAt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ActiveFrom)
+                <p>@Html.DisplayNameFor(model => model.ActiveFrom)</p>
+
+                <p>@Html.DisplayNameFor(model => model.ActiveUntil)</p>
             </th>
-            <th></th>
-            <th></th>
+            <th><p>Remaining/Total</p><p>Remaining Today</p></th>
+            <th>Check Out</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TicketType.TicketTypeId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Client.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SoldByUser.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SoldAt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ActiveFrom)
-                </td>
-                <td>
-                    @if (item.Status == Ticket.ActiveStaus.Active)
-                    {
-                        <p>
-                            Active
-                        </p>
-                    }
-                    @if (item.Status == Ticket.ActiveStaus.Expired)
-                    {
-                        <p>
-                            Expired
-                        </p>
-                    }
-                    @if (item.Status == Ticket.ActiveStaus.NotActiveYet)
-                    {
-                        <p>
-                            Not Active Yet
-                        </p>
-                    }
+        <tr>
+            <td>
+                @if (item.CanCheckIn && !ViewBag.IsAlreadYcheckedIn)
+                {
+                    <p>
+                        <form action=@Url.Action("CheckIn", "Sales") method="post">
 
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.TicketId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.TicketId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.TicketId">Delete</a>
-                </td>
-            </tr>
+                            <input type="hidden" name="clientId" value="@Html.DisplayFor(modelItem => item.ClientId)" />
+                            <input type="hidden" name="ticketId" value=" @Html.DisplayFor(modelItem => item.TicketId)" />
+                            <div class="form-group">
+                                <button type="submit" name="your_name" value="your_value" class="btn btn-success">Check In</button>
+                            </div>
+                        </form>
+                    </p>
+                }
+            </td>
+            <td>
+                <p>
+                    @Html.DisplayFor(modelItem => item.TicketType.TicketTypeName)
+                </p>
+                <p>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </p>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoldAt)
+            </td>
+            <td>
+                <p>
+                    @Html.DisplayFor(modelItem => item.ActiveFrom)
+                </p>
+                <p>
+                    @Html.DisplayFor(modelItem => item.ActiveUntil)
+                </p>
+            </td>
+            <td>
+                <p>
+                    @Html.DisplayFor(modelItem => item.RemainingCheckinsCount)
+                    /
+                    @Html.DisplayFor(modelItem => item.TicketType.TotalCheckinLimit)
+                </p>
+                <p>
+                    @Html.DisplayFor(modelItem => item.RemainingCheckinsTodayCount)
+                </p>
+            </td>
+            <td>
+
+                @if (item.CanCheckOut)
+                {
+                    <p>
+                        <form action=@Url.Action("CheckOut", "Sales") method="post">
+
+                            <input type="hidden" name="clientId" value="@Html.DisplayFor(modelItem => item.ClientId)" />
+                            <input type="hidden" name="ticketId" value=" @Html.DisplayFor(modelItem => item.TicketId)" />
+                            <div class="form-group">
+                                <button type="submit" name="your_name" value="your_value" class="btn btn-danger">Check Out</button>
+                            </div>
+                        </form>
+                    </p>
+                }
+            </td>
+        </tr>
         }
     </tbody>
 </table>

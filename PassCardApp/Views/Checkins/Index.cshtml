@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PassCardApp.Models.Checkin>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ticket)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckedInBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChecinDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckedOutBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckOutDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ticket.TicketId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckedInBy.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChecinDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckedOutBy.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckOutDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CheckinId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CheckinId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CheckinId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

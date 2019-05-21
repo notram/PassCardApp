@@ -1,0 +1,51 @@
+﻿@model PassCardApp.Models.Checkin
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Checkin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ticket)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ticket.TicketId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckedInBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CheckedInBy.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ChecinDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ChecinDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckedOutBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CheckedOutBy.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckOutDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CheckOutDate)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CheckinId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

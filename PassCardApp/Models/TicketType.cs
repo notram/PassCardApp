@@ -165,6 +165,19 @@ namespace PassCardApp.Models
         
         public DateTime InsertedAt { get; set; }
 
+
+        public bool IsActive(DayOfWeek d)
+        {
+            if (d == DayOfWeek.Monday && ActiveMonday) return true;
+            if (d == DayOfWeek.Tuesday && ActiveTuesday) return true;
+            if (d == DayOfWeek.Thursday && ActiveThursday) return true;
+            if (d == DayOfWeek.Wednesday && ActiveWednesday) return true;
+            if (d == DayOfWeek.Friday && ActiveFriday) return true;
+            if (d == DayOfWeek.Saturday && ActiveSaturday) return true;
+            if (d == DayOfWeek.Sunday && ActiveSunday) return true;
+            return false;
+        }
+
         //public bool Active { get; set; }
 
         //public DateTime DeActivatedAt { get; set; }

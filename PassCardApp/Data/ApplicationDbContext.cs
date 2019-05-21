@@ -18,5 +18,6 @@ namespace PassCardApp.Data
         public DbSet<Clients> Clients { get; set; }
         public DbSet<TicketType> TicketTypes { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<PassCardApp.Models.Checkin> Checkin { get; set; }
     }
 }
